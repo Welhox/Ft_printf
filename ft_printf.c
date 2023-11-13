@@ -6,7 +6,7 @@
 /*   By: clundber <clundber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:59:15 by clundber          #+#    #+#             */
-/*   Updated: 2023/11/13 17:05:49 by clundber         ###   ########.fr       */
+/*   Updated: 2023/11/13 17:20:17 by clundber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,10 +114,8 @@ static int	ft_print_special(const char s, va_list ap)
 		count += ft_puthex(va_arg(ap, long), 0);
 	}
 	else
-	{
-		write(1, &s, 1);
-		count++;
-	}
+		count += write(1, &s, 1);
+	//	count++;
 	return (count);
 }
 int	ft_printf(const char *str, ...)

@@ -6,7 +6,7 @@
 /*   By: clundber <clundber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:27:09 by clundber          #+#    #+#             */
-/*   Updated: 2023/11/13 17:05:09 by clundber         ###   ########.fr       */
+/*   Updated: 2023/11/13 17:18:18 by clundber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,34 +23,44 @@ int	main(void)
 	int	a = 10;
 	void *b = &a;
 
-printf("%c\n", '0');
-ft_printf("%c\n", '0');
+printf("%c\n", '?');
+ft_printf("%c\n", '?');
 
-printf("OG %c\n", '0');
+/* printf("OG %c\n", '0');
 ft_printf("FT %c\n", '0');
 
-ft_printf("FT%c\n", '0');
-ft_printf("FT %c \n", '0');
-ft_printf("FT %c\n", '0' - 256);
-ft_printf("FT%c \n", '0' + 256);
-ft_printf("FT %c %c %c \n", '0', 0, '1');
-ft_printf("FT %c %c %c \n", ' ', ' ', ' ');
-ft_printf("FT %c %c %c \n", '1', '2', '3');
-ft_printf("FT %c %c %c \n", '2', '1', 0);
-ft_printf("FT %c %c %c \n", 0, '1', '2');
-
 printf("OG%c\n", '0');
+ft_printf("FT%c\n", '0');
 printf("OG %c \n", '0');
+ft_printf("FT %c \n", '0');
 printf("OG %c\n", '0' - 256);
+ft_printf("FT %c\n", '0' - 256);
 printf("OG%c \n", '0' + 256);
+ft_printf("FT%c \n", '0' + 256);
 printf("OG %c %c %c \n", '0', 0, '1');
+ft_printf("FT %c %c %c \n", '0', 0, '1');
 printf("OG %c %c %c \n", ' ', ' ', ' ');
+ft_printf("FT %c %c %c \n", ' ', ' ', ' ');
 printf("OG %c %c %c \n", '1', '2', '3');
+ft_printf("FT %c %c %c \n", '1', '2', '3');
 printf("OG %c %c %c \n", '2', '1', 0);
+ft_printf("FT %c %c %c \n", '2', '1', 0);
 printf("OG %c %c %c \n", 0, '1', '2');
+ft_printf("FT %c %c %c \n", 0, '1', '2'); */
 
 
-/*
+
+
+
+
+
+
+
+
+
+
+
+
 printf("OG This is %% test %s\n", "Hello");
 ft_printf("FT This is %% test %s\n", "Hello");
 
@@ -75,8 +85,8 @@ ft_printf("FT This is HIGH hex test %X\n", -344897534);
 printf("OG void pointer test = %p\n", b);
 ft_printf("FT void pointer test = %p\n", b);
 
-printf("OG = %i\n", printf("OG Testing %s%s okei %i and do  not forget the %i hexas coming up %x and %%sign\n", "Mamma", "mia", 42, -27, 258943));
-printf("FT = %i\n", ft_printf("FT Testing %s%s okei %i and do  not forget the %i hexas coming up %x and %%sign\n", "Mamma", "mia", 42, -27, 258943));
- */
+printf("OG = %i\n", printf("OG Testing %s %s okei %i and do  not forget the %i hexas coming up %x and %%sign\n", "Mamma", "mia", 42, -27, 258943));
+printf("FT = %i\n", ft_printf("FT Testing %s %s okei %i and do  not forget the %i hexas coming up %x and %%sign\n", "Mamma", "mia", 42, -27, 258943));
+
 //printf("%i", write(1, "Hello", 5));
 }
