@@ -6,7 +6,7 @@
 /*   By: clundber <clundber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:27:09 by clundber          #+#    #+#             */
-/*   Updated: 2023/11/13 17:18:18 by clundber         ###   ########.fr       */
+/*   Updated: 2023/11/14 14:23:26 by clundber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "ft_printf.h"
+#include <limits.h>
 
 int	ft_printf (const char *, ...);
 
@@ -23,12 +24,14 @@ int	main(void)
 	int	a = 10;
 	void *b = &a;
 
-printf("%c\n", '?');
-ft_printf("%c\n", '?');
+/* printf("OG = %i\n", printf(" NULL %s NULL ", NULL));
+printf("FT = %i\n", ft_printf(" NULL %s NULL ", NULL));  */
 
-/* printf("OG %c\n", '0');
-ft_printf("FT %c\n", '0');
 
+
+/* printf("OG = %i\n", printf("OG %c\n", '0'));
+printf("FT = %i\n", ft_printf("FT %c\n", '0')); */
+/*
 printf("OG%c\n", '0');
 ft_printf("FT%c\n", '0');
 printf("OG %c \n", '0');
@@ -49,6 +52,36 @@ printf("OG %c %c %c \n", 0, '1', '2');
 ft_printf("FT %c %c %c \n", 0, '1', '2'); */
 
 
+/* printf("OG = %p\n", printf(" %p ", -1));
+printf("FT = %p\n", ft_printf(" %p ", -1));  */
+
+/* printf("OG = %d\n", printf(" %p %p ", LONG_MIN, LONG_MAX));
+printf("FT = %d\n", ft_printf(" %p %p ", LONG_MIN, LONG_MAX));
+ */
+printf("OG = %d\n", printf(" %p %p ", ULONG_MAX, -ULONG_MAX));
+printf("FT = %d\n", ft_printf(" %p %p ", ULONG_MAX, -ULONG_MAX)); 
+
+printf("OG = %d\n", printf(" %p %p ", 18446744073709551613, -ULONG_MAX));
+printf("FT = %d\n", ft_printf(" %p %p ", 18446744073709551613, -ULONG_MAX)); 
+
+/* printf("OG = %i\n", printf(" %d ", -1));
+printf("FT = %i\n", ft_printf(" %d ", -1)); */
+/* 
+printf("OG = %i\n", printf(" %x %x %x %x ", LONG_MAX, LONG_MIN, ULONG_MAX, 9223372036854775807LL));
+printf("FT = %i\n", ft_printf(" %x %x %x %x ", LONG_MAX, LONG_MIN, ULONG_MAX, 9223372036854775807LL));
+ */
+
+/* 
+printf("OG = %i\n", printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%",'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0));
+printf("FT = %i\n", ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%",'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0));
+ */
+
+/* printf("OG = %i\n", printf(" %x %x\n", 2147483646, -2147483647));
+printf("FT = %i\n", ft_printf(" %x %x\n", 2147483646, -2147483647));
+
+
+printf("OG = %i\n", printf(" %x %x\n", 2147483647, -2147483648));
+printf("FT = %i\n", ft_printf(" %x %x\n", 2147483647, -2147483648)); */
 
 
 
@@ -60,8 +93,7 @@ ft_printf("FT %c %c %c \n", 0, '1', '2'); */
 
 
 
-
-printf("OG This is %% test %s\n", "Hello");
+/* printf("OG This is %% test %s\n", "Hello");
 ft_printf("FT This is %% test %s\n", "Hello");
 
 printf("OG This is str test %s\n", "Hello");
@@ -87,6 +119,6 @@ ft_printf("FT void pointer test = %p\n", b);
 
 printf("OG = %i\n", printf("OG Testing %s %s okei %i and do  not forget the %i hexas coming up %x and %%sign\n", "Mamma", "mia", 42, -27, 258943));
 printf("FT = %i\n", ft_printf("FT Testing %s %s okei %i and do  not forget the %i hexas coming up %x and %%sign\n", "Mamma", "mia", 42, -27, 258943));
-
+ */
 //printf("%i", write(1, "Hello", 5));
 }

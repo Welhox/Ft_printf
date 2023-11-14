@@ -6,7 +6,7 @@
 /*   By: clundber <clundber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:59:15 by clundber          #+#    #+#             */
-/*   Updated: 2023/11/13 17:20:17 by clundber         ###   ########.fr       */
+/*   Updated: 2023/11/14 14:39:58 by clundber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,32 @@ static int	ft_putstr(char *s)
 	int	count;
 
 	count = 0;
-	if (s)
+	if (!s)
 	{
-		while (*s)
-		{
-			write(1, s, 1);
-			s++;
-			count++;
-		}
+		write (1, "(null)", 6);
+		count += 6;
+		return (count);
 	}
+	while (*s)
+	{
+		write(1, s, 1);
+		s++;
+		count++;
+	}
+	return (count);
+}
+
+static int	ft_putunbr(unsigned int nbr)
+
+{
+	char			output;
+	int				count;
+
+	count = 1;
+	output = nbr % 10 + 48;
+	if (nbr / 10 != 0)
+		count += ft_putunbr(nbr / 10);
+	write(1, &output, 1);
 	return (count);
 }
 
@@ -53,6 +70,7 @@ static int	ft_putnbr(int n)
 	{
 		write (1, "-", 1);
 		n = -n;
+		count++;
 	}
 	nb = n;
 	output = nb % 10 + 48;
@@ -62,7 +80,7 @@ static int	ft_putnbr(int n)
 	return (count);
 }
 
-static int	ft_puthex(long nbr, int caps)
+static int	ft_puthex(unsigned long long nbr, int caps)
 
 {
 	int		count;
@@ -75,15 +93,32 @@ static int	ft_puthex(long nbr, int caps)
 	else
 		hex = "0123456789ABCDEF";
 	if (nbr < 0)
-	{
-		write(1, "-", 1);
 		nbr = -nbr;
-		count++;
-	}
 	output = hex[nbr % 16];
 	if (nbr / 16 != 0)
-		ft_puthex((nbr / 16), caps);
-	ft_putchar(output);
+		count += ft_puthex((nbr / 16), caps);
+	count += ft_putchar(output);
+	return (count);
+}
+
+static int	ft_puthex_u(unsigned long long nbr, int caps)
+
+{
+	int		count;
+	char	*hex;
+	char	output;
+
+	count = 0;
+	if (caps == 0)
+		hex = "0123456789abcdef";
+	else
+		hex = "0123456789ABCDEF";
+	//if (nbr < 0)
+	//	nbr = -nbr;
+	output = hex[nbr % 16];
+	if (nbr / 16 != 0)
+		count += ft_puthex_u((nbr / 16), caps);
+	count += ft_putchar(output);
 	return (count);
 }
 
@@ -98,24 +133,23 @@ static int	ft_print_special(const char s, va_list ap)
 	else if (s == 's')
 		count += ft_putstr(va_arg(ap, char*));
 	else if (s == 'd')
-		count += ft_putnbr(va_arg(ap, int));  //should be float?
+		count += ft_putnbr(va_arg(ap, int)); 
 	else if (s == 'i')
 		count += ft_putnbr(va_arg(ap, int));
 	else if (s == 'u')
-		count += ft_putnbr(va_arg(ap, unsigned int));
+		count += ft_putunbr(va_arg(ap, unsigned int));
 	else if (s == 'x')
-		count += ft_puthex(va_arg(ap, long), 0); //lowercase hex
+		count += ft_puthex(va_arg(ap, long long), 0); //lowercase hex
 	else if (s == 'X')
-		count += ft_puthex(va_arg(ap, long), 1); //uppercase hex
+		count += ft_puthex(va_arg(ap, long long), 1); //uppercase hex
 	else if (s == 'p')
 	{
 		write(1, "0x", 2);
 		count += 2;
-		count += ft_puthex(va_arg(ap, long), 0);
+		count += ft_puthex_u(va_arg(ap, unsigned long long), 0);
 	}
 	else
 		count += write(1, &s, 1);
-	//	count++;
 	return (count);
 }
 int	ft_printf(const char *str, ...)
@@ -136,8 +170,10 @@ int	ft_printf(const char *str, ...)
 			counter += ft_print_special(str[i], ap);
 		}
 		else
+		{
 			write(1, &str[i], 1);
-		counter++;
+			counter++;
+		}
 		i++;
 	}
 	va_end(ap);
