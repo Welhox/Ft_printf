@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putchar_return.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clundber <clundber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 10:09:04 by clundber          #+#    #+#             */
-/*   Updated: 2023/11/15 12:16:31 by clundber         ###   ########.fr       */
+/*   Created: 2023/11/15 11:32:00 by clundber          #+#    #+#             */
+/*   Updated: 2023/11/15 12:12:50 by clundber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include <unistd.h>
 
-int	ft_printf(const char *str, ...);
-int	ft_printhex(unsigned long nbr, int caps);
-int	ft_putnbr_return(int n);
-int	ft_putstr_return(char *s);
-int	ft_putchar_return(char c);
-int	ft_putnbr_u_return(unsigned int nbr);
-#endif
+int	ft_putchar_return(char c)
+
+{
+	write(1, &c, 1);
+	return (1);
+}

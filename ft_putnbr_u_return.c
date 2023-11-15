@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_u_return.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clundber <clundber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 10:09:04 by clundber          #+#    #+#             */
-/*   Updated: 2023/11/15 12:16:31 by clundber         ###   ########.fr       */
+/*   Created: 2023/11/15 11:33:47 by clundber          #+#    #+#             */
+/*   Updated: 2023/11/15 12:14:28 by clundber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include <unistd.h>
 
-int	ft_printf(const char *str, ...);
-int	ft_printhex(unsigned long nbr, int caps);
-int	ft_putnbr_return(int n);
-int	ft_putstr_return(char *s);
-int	ft_putchar_return(char c);
-int	ft_putnbr_u_return(unsigned int nbr);
-#endif
+int	ft_putnbr_u_return(unsigned int nbr)
+
+{
+	char			output;
+	int				count;
+
+	count = 1;
+	output = nbr % 10 + 48;
+	if (nbr / 10 != 0)
+		count += ft_putnbr_u_return(nbr / 10);
+	write(1, &output, 1);
+	return (count);
+}
