@@ -6,7 +6,7 @@
 /*   By: clundber <clundber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:27:09 by clundber          #+#    #+#             */
-/*   Updated: 2023/11/14 14:23:26 by clundber         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:58:46 by clundber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ printf("FT = %p\n", ft_printf(" %p ", -1));  */
 /* printf("OG = %d\n", printf(" %p %p ", LONG_MIN, LONG_MAX));
 printf("FT = %d\n", ft_printf(" %p %p ", LONG_MIN, LONG_MAX));
  */
-printf("OG = %d\n", printf(" %p %p ", ULONG_MAX, -ULONG_MAX));
+/* printf("OG = %d\n", printf(" %p %p ", ULONG_MAX, -ULONG_MAX));
 printf("FT = %d\n", ft_printf(" %p %p ", ULONG_MAX, -ULONG_MAX)); 
 
 printf("OG = %d\n", printf(" %p %p ", 18446744073709551613, -ULONG_MAX));
-printf("FT = %d\n", ft_printf(" %p %p ", 18446744073709551613, -ULONG_MAX)); 
+printf("FT = %d\n", ft_printf(" %p %p ", 18446744073709551613, -ULONG_MAX));  */
 
 /* printf("OG = %i\n", printf(" %d ", -1));
 printf("FT = %i\n", ft_printf(" %d ", -1)); */
@@ -110,10 +110,19 @@ ft_printf("FT This is u int test %d\n", -123456789);
 
 printf("OG This is low hex test %x\n", 25135135);
 ft_printf("FT This is low hex test %x\n", 25135135);
+*/
+printf("OG = %d\n", printf("%X\n", LONG_MAX));
+printf("FT = %d\n", ft_printf("%X\n", LONG_MAX));
 
-printf("OG This is HIGH hex test %X\n", -344897534);
-ft_printf("FT This is HIGH hex test %X\n", -344897534);
+printf("OG = %d\n", printf("%X\n", ULONG_MAX));
+printf("FT = %d\n", ft_printf("%X\n", ULONG_MAX));
 
+/* printf("OG = %d", printf("OG This is HIGH hex test %lx\n", 500000000001));
+printf("FT = %d", ft_printf("FT This is HIGH hex test %x\n", 500000000001));
+
+printf("OG = %d", printf("OG This is HIGH hex test %x\n", -500000000));
+printf("FT = %d", ft_printf("FT This is HIGH hex test %x\n", -500000000)); */
+/*
 printf("OG void pointer test = %p\n", b);
 ft_printf("FT void pointer test = %p\n", b);
 

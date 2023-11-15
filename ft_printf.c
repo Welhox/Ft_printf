@@ -6,7 +6,7 @@
 /*   By: clundber <clundber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:59:15 by clundber          #+#    #+#             */
-/*   Updated: 2023/11/14 14:39:58 by clundber         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:11:27 by clundber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static int	ft_putnbr(int n)
 	return (count);
 }
 
-static int	ft_puthex(unsigned long long nbr, int caps)
+static int	ft_puthex(unsigned long nbr, int caps)
 
 {
 	int		count;
@@ -92,8 +92,8 @@ static int	ft_puthex(unsigned long long nbr, int caps)
 		hex = "0123456789abcdef";
 	else
 		hex = "0123456789ABCDEF";
-	if (nbr < 0)
-		nbr = -nbr;
+/* 	if (nbr < 0)
+		nbr = -nbr; */
 	output = hex[nbr % 16];
 	if (nbr / 16 != 0)
 		count += ft_puthex((nbr / 16), caps);
@@ -101,7 +101,7 @@ static int	ft_puthex(unsigned long long nbr, int caps)
 	return (count);
 }
 
-static int	ft_puthex_u(unsigned long long nbr, int caps)
+/* static int	ft_puthex_u(unsigned long long nbr, int caps)
 
 {
 	int		count;
@@ -120,7 +120,7 @@ static int	ft_puthex_u(unsigned long long nbr, int caps)
 		count += ft_puthex_u((nbr / 16), caps);
 	count += ft_putchar(output);
 	return (count);
-}
+} */
 
 static int	ft_print_special(const char s, va_list ap)
 
@@ -139,14 +139,14 @@ static int	ft_print_special(const char s, va_list ap)
 	else if (s == 'u')
 		count += ft_putunbr(va_arg(ap, unsigned int));
 	else if (s == 'x')
-		count += ft_puthex(va_arg(ap, long long), 0); //lowercase hex
+		count += ft_puthex(va_arg(ap,unsigned int), 0);
 	else if (s == 'X')
-		count += ft_puthex(va_arg(ap, long long), 1); //uppercase hex
+		count += ft_puthex(va_arg(ap, unsigned int), 1);
 	else if (s == 'p')
 	{
-		write(1, "0x", 2);
-		count += 2;
-		count += ft_puthex_u(va_arg(ap, unsigned long long), 0);
+		count += write(1, "0x", 2);
+		//count += 2;
+		count += ft_puthex(va_arg(ap, long long), 0);
 	}
 	else
 		count += write(1, &s, 1);
