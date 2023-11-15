@@ -6,7 +6,7 @@
 /*   By: clundber <clundber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:30:58 by clundber          #+#    #+#             */
-/*   Updated: 2023/11/15 12:14:45 by clundber         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:59:04 by clundber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,24 @@ int	ft_putnbr_return(int n)
 	char			output;
 	unsigned int	nb;
 	int				count;
+	int				temp;
 
-	count = 1;
+	temp = 0;
+	count = 0;
 	if (n < 0)
 	{
 		count += write (1, "-", 1);
 		n = -n;
 	}
+	if (count == -1)
+		return (-1);
 	nb = n;
 	output = nb % 10 + 48;
 	if (nb / 10 != 0)
 		count += ft_putnbr_return(nb / 10);
-	write(1, &output, 1);
+	if (temp > count)
+		return (-1);
+	temp = count;
+	count += write(1, &output, 1);
 	return (count);
 }

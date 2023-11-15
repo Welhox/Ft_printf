@@ -6,7 +6,7 @@
 /*   By: clundber <clundber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:59:15 by clundber          #+#    #+#             */
-/*   Updated: 2023/11/15 12:15:12 by clundber         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:07:49 by clundber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int	ft_print_special(const char s, va_list ap)
 	else if (s == 'p')
 	{
 		count += write(1, "0x", 2);
+		if (count == -1)
+			return (-1);
 		count += ft_printhex(va_arg(ap, long long), 0);
 	}
 	else
@@ -47,8 +49,10 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
 	int		counter;
+	int		error;
 	int		i;
 
+	error = 0;
 	i = 0;
 	va_start(ap, str);
 	counter = 0;
@@ -61,6 +65,9 @@ int	ft_printf(const char *str, ...)
 		}
 		else
 			counter += write(1, &str[i], 1);
+		if (error > counter)
+			return (-1);
+		error = counter;
 		i++;
 	}
 	va_end(ap);

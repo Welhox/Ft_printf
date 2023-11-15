@@ -6,7 +6,7 @@
 #    By: clundber <clundber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 14:25:47 by clundber          #+#    #+#              #
-#    Updated: 2023/11/15 11:40:23 by clundber         ###   ########.fr        #
+#    Updated: 2023/11/15 13:56:40 by clundber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OFILES = $(CFILES:.c=.o)
 
 CFLAGS = -Wall -Werror -Wextra
 
-all = $(NAME)
+all: $(NAME)
 
 $(NAME): $(OFILES)
 	ar rcs $(NAME) $(OFILES)

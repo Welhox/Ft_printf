@@ -6,7 +6,7 @@
 /*   By: clundber <clundber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:32:00 by clundber          #+#    #+#             */
-/*   Updated: 2023/11/15 12:12:50 by clundber         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:35:21 by clundber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 int	ft_putchar_return(char c)
 
 {
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }
