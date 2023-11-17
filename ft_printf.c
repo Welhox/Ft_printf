@@ -6,7 +6,7 @@
 /*   By: clundber <clundber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:59:15 by clundber          #+#    #+#             */
-/*   Updated: 2023/11/15 15:07:49 by clundber         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:09:28 by clundber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,25 +50,23 @@ int	ft_printf(const char *str, ...)
 	va_list	ap;
 	int		counter;
 	int		error;
-	int		i;
 
 	error = 0;
-	i = 0;
-	va_start(ap, str);
 	counter = 0;
-	while (str[i])
+	va_start(ap, str);
+	while (*str)
 	{
-		if (str[i] == '%')
-		{
-			i++;
-			counter += ft_print_special(str[i], ap);
-		}
+		if (*str == '%' && str++)
+			counter += ft_print_special(*str, ap);
 		else
-			counter += write(1, &str[i], 1);
+			counter += write(1, str, 1);
 		if (error > counter)
+		{
+			va_end(ap);
 			return (-1);
+		}
 		error = counter;
-		i++;
+		str++;
 	}
 	va_end(ap);
 	return (counter);
