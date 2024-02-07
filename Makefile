@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: clundber <clundber@student.42.fr>          +#+  +:+       +#+         #
+#    By: clundber <clundber@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 14:25:47 by clundber          #+#    #+#              #
-#    Updated: 2023/11/15 13:56:40 by clundber         ###   ########.fr        #
+#    Updated: 2024/02/07 14:56:09 by clundber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
